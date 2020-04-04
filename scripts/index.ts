@@ -1,25 +1,13 @@
 import fs from "fs";
 import path from "path";
-import xlsx from "node-xlsx";
-import { getFileNameFromPath } from "./helpers/getFileNameFromPath";
+import { getFiles, getFileNameFromPath } from "./helpers";
 
-const filePath = process.argv[2];
-
-async function readData(filePath: string, destination?: string) {
-  const originalName = getFileNameFromPath(filePath);
-  console.log(originalName);
-  let workSheetsFromFile = "";
-  try {
-    workSheetsFromFile = xlsx.parse(`${filePath}`);
-    fs.writeFile(
-      destination? destination : path.resolve(__dirname, `../../data/${originalName}.json`), // this path resolves from within the ./dist directory that's created at compilation time
-      JSON.stringify(workSheetsFromFile),
-      () => {
-        console.log(`finished writing`)
-      }
-    );
-  } catch (error) {
-    console.error(error);
-  }
+function processLocalData() {
+  const files = getFiles(path.resolve(__dirname, "../../data/localData"));
+  console.log(files);
+  // get all files from directory (i.e. data/localData)
+  // filter non-excel files
+  // pass excel files into convertExcelToJSON
 }
-readData(filePath);
+
+processLocalData();
