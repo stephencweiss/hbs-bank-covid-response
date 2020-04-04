@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es5",
+    "lib": ["esnext"],
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  },
+  "include": ["./**/*"],
+  "exclude": ["**/*.test.*"]
+}

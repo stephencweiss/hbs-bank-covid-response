@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "build:scripts": "tsc -b scripts/"
+    "build:scripts": "tsc -b scripts/",
+    "load:data": "node scripts/dist/index.js"
   },
   "dependencies": {
     "next": "9.3.4",
