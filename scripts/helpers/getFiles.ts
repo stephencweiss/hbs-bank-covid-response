@@ -1,5 +1,9 @@
 const fs = require("fs");
 
 export function getFiles(directoryPath) {
-  return fs.readdirSync(directoryPath, { withFileTypes: true });
+  const files = fs.readdirSync(directoryPath, { withFileTypes: true });
+  return files.reduce((acc, cur) => {
+    acc.push(cur.name);
+    return acc;
+  }, []);
 }
